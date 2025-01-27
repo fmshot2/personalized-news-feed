@@ -1,6 +1,6 @@
-# Personalized News Feed - React + TypeScript + Redux Toolkit + Docker
+# Personalized Global News Feed - React + TypeScript + Redux Toolkit + Docker
 
-This project is a personal news feed application built with React, TypeScript, and Vite. It allows users to filter news based on their preferences and provides a personalized experience.
+This project is a personal news feed application built with React, TypeScript, and Redux Toolkit and Docker. It allows users to filter global news based on their preferences and provides a personalized experience.
 
 ## Running the Project
 
