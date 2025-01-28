@@ -7,6 +7,7 @@ const Headers = () => {
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryName, setCategoryName] = useState('');
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState('');
 
   const dispatch = useAppDispatch();
   const { categories, loading, error } = useAppSelector((state) => state.news);
@@ -20,10 +21,21 @@ const Headers = () => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
+  
   useEffect(() => {
     triggerSearch();
-  }, [categoryName]); // Trigger search whenever the category changes
+  }, [categoryName, debouncedSearchQuery]); // Trigger search when category or debounced query changes
 
+  // Debounce logic for search query
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      setDebouncedSearchQuery(searchQuery); // Update debounced query after delay
+    }, 500); // 500ms debounce delay
+
+    return () => {
+      clearTimeout(debounceTimer); // Cleanup timeout on searchQuery change
+    };
+  }, [searchQuery]);
   return (
 
     <div className="flex items-center justify-between mb-8">
