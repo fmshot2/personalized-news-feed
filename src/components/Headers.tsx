@@ -14,38 +14,40 @@ const Headers = () => {
   const { userInfo } = useAppSelector((state) => state.user);
 
   const triggerSearch = () => {
-    dispatch(fetchNews({ categoryName, author: searchQuery }));
+    if (debouncedSearchQuery.length >= 3) {
+      dispatch(fetchNews({ categoryName, author: debouncedSearchQuery }));
+    }
   };
 
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  
   useEffect(() => {
     triggerSearch();
   }, [categoryName, debouncedSearchQuery]); // Trigger search when category or debounced query changes
 
   // Debounce logic for search query
   useEffect(() => {
+    if (searchQuery.length < 3) {
+      setDebouncedSearchQuery(''); // Clear search if less than 3 characters
+      return;
+    }
+
     const debounceTimer = setTimeout(() => {
-      setDebouncedSearchQuery(searchQuery); // Update debounced query after delay
-    }, 500); // 500ms debounce delay
+      setDebouncedSearchQuery(searchQuery);
+    }, 2000); // 2 seconds debounce delay
 
-    return () => {
-      clearTimeout(debounceTimer); // Cleanup timeout on searchQuery change
-    };
+    return () => clearTimeout(debounceTimer);
   }, [searchQuery]);
+
   return (
-
     <div className="flex items-center justify-between mb-8">
-
       <div className="flex items-center space-x-4">
         <div className="flex items-center text-sm text-gray-600"></div>
       </div>
 
       {!userInfo && (
-
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-4">
             <div
@@ -65,7 +67,7 @@ const Headers = () => {
                   d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
                 />
               </svg>
-              Filter by Categoryss
+              Filter by News Category
               {isCategoryDropdownOpen && (
                 <div className="absolute right-2 top-5 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-10 border">
                   {loading && (
@@ -99,10 +101,8 @@ const Headers = () => {
             triggerSearch={triggerSearch}
           />
         </div>
-      )
-      }
+      )}
     </div>
-
   );
 };
 

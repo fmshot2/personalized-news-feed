@@ -9,7 +9,7 @@ type SearchProps = {
       <div className="relative">
         <input
           type="text"
-          placeholder="Search for anything..."
+          placeholder="Search news by author's name"
           value={searchQuery}
           onChange={(e) => {
             setSearchQuery(e.target.value);
