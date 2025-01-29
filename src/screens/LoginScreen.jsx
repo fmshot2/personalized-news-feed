@@ -27,8 +27,7 @@ const LoginScreen = () => {
   };
 
   return (
-    // <div className='text-center'>
-      <div className="flex items-center justify-center align-items-center bg-gray-50 px-4 ">
+      <div className="flex min-h-screen items-center justify-center align-items-center bg-gray-50 px-4 ">
         <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
           <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">Welcome Back</h2>
           <p className="text-center text-sm text-gray-600 mb-4">
@@ -89,7 +88,6 @@ const LoginScreen = () => {
           </div>
         </div>
       </div>
-    // </div>
   );
 };
 
