@@ -10,7 +10,7 @@ This project is a personal news feed application built with React, TypeScript, a
 
 3. Run docker-compose up -d
 
-5. Visit http://localhost:5173/ to see the page.
+5. Visit http://localhost:5173/ to view the project.
 
 
 
