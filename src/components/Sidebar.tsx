@@ -97,7 +97,8 @@ const Sidebar = () => {
                 </svg>
                 Login
               </Link>
-     
+            </div>
+          )}
         </nav>
       </aside>
     </div>
