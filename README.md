@@ -4,7 +4,7 @@ This project is a personal news feed application built with React, TypeScript, a
 
 ## Running the Project
 
-1. Before stating, ensure you already have the backend ruuning. ( https://github.com/fmshot2/Personalized-News-Feed-Laravel-Mysql-Docker ).
+1. Before starting, please ensure you already have the backend ruuning. ( https://github.com/fmshot2/Personalized-News-Feed-Laravel-Mysql-Docker ).
 
 2. Clone or unzip the project in your prefered directory.
 
